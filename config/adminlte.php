@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Siddhivinayak Enterprises',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -63,12 +63,12 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => 'Siddhivinayak Enterprises',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Admin Logo',
+    'logo_img_alt' => 'Siddhivinayak Enterprises',
 
     /*
     |--------------------------------------------------------------------------
@@ -114,7 +114,7 @@ return [
         'mode' => 'fullscreen',
         'img' => [
             'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-            'alt' => 'AdminLTE Preloader Image',
+            'alt' => 'Siddhivinayak Enterprises',
             'effect' => 'animation__shake',
             'width' => 60,
             'height' => 60,
@@ -257,7 +257,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'dashboard',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -302,7 +302,7 @@ return [
         // Navbar items:
         [
             'type' => 'navbar-search',
-            'text' => 'search',
+            'text' => 'Search',
             'topnav_right' => true,
         ],
         [
@@ -310,87 +310,108 @@ return [
             'topnav_right' => true,
         ],
 
-        // Sidebar items:
+        // Sidebar items
         [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
+            'text' => 'Dashboard',
+            'route'  => 'dashboard',
+            'icon' => 'fas fa-tachometer-alt',
         ],
+
         [
-            'text' => 'blog',
-            'url' => 'admin/blog',
-            'can' => 'manage-blog',
-        ],
-        [
-            'text' => 'pages',
-            'url' => 'admin/pages',
-            'icon' => 'far fa-fw fa-file',
-            'label' => 4,
-            'label_color' => 'success',
-        ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text' => 'multilevel',
-            'icon' => 'fas fa-fw fa-share',
+            'text'    => 'Products',
+            'icon'    => 'fas fa-boxes',
             'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url' => '#',
+                    'text' => 'All Products',
+                    'route' => 'products.index',
+                    'icon' => 'fas fa-list',
                 ],
                 [
-                    'text' => 'level_one',
-                    'url' => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                        ],
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url' => '#',
+                    'text' => 'Add New Product',
+                    'route' => 'products.create',
+                    'icon' => 'fas fa-plus',
                 ],
             ],
         ],
-        ['header' => 'labels'],
+
         [
-            'text' => 'important',
-            'icon_color' => 'red',
-            'url' => '#',
+            'text'    => 'Brands',
+            'icon'    => 'fas fa-tags',
+            'submenu' => [
+                [
+                    'text' => 'All Brands',
+                    'route' => 'brands.index',
+                    'icon' => 'fas fa-list',
+                ],
+                [
+                    'text' => 'Add Brand',
+                    'route' => 'brands.create',
+                    'icon' => 'fas fa-plus',
+                ],
+            ],
         ],
+
         [
-            'text' => 'warning',
-            'icon_color' => 'yellow',
-            'url' => '#',
+            'text'    => 'Sales / Billing',
+            'icon'    => 'fas fa-cash-register',
+            'submenu' => [
+                [
+                    'text' => 'All Sales',
+                    'route' => 'sales.index',
+                    'icon' => 'fas fa-list',
+                ],
+                [
+                    'text' => 'Add Sale',
+                    'route' => 'sales.create',
+                    'icon' => 'fas fa-plus',
+                ],
+            ],
         ],
+
         [
-            'text' => 'information',
-            'icon_color' => 'cyan',
-            'url' => '#',
+            'text'    => 'Stock Management',
+            'icon'    => 'fas fa-warehouse',
+            'submenu' => [
+                [
+                    'text' => 'Stock List',
+                    'route' => 'stock.index',
+                    'icon' => 'fas fa-list',
+                ],
+                [
+                    'text' => 'Add Stock',
+                    'route' => 'stock.add',
+                    'icon' => 'fas fa-plus',
+                ],
+            ],
+        ],
+
+        [
+            'text'    => 'Payments',
+            'icon'    => 'fas fa-credit-card',
+            'submenu' => [
+                [
+                    'text' => 'All Payments',
+                    'route' => 'payments.index',
+                    'icon' => 'fas fa-list',
+                ],
+            ],
+        ],
+
+        [
+            'text'    => 'Reports',
+            'icon'    => 'fas fa-chart-line',
+            'submenu' => [
+                [
+                    'text' => 'Daily Report',
+                    'route' => 'reports.daily',
+                    'icon' => 'fas fa-calendar-day',
+                ],
+                [
+                    'text' => 'Monthly Report',
+                    'route' => 'reports.monthly',
+                    'icon' => 'fas fa-calendar-alt',
+                ],
+            ],
         ],
     ],
 
