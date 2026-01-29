@@ -1,1 +1,0 @@
-<h1>Counter Sale Screen</h1><form method='POST' action='/sale'>@csrf<button>Save</button></form>
