@@ -14,8 +14,10 @@ class PaymentController extends Controller
         return view('payments.index', compact('payments'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
+        $selectedSaleId = $request->sale_id;
+
         // Get all sales that have remaining balance
         $sales = Sale::withSum('payments', 'amount') // sum of payments per sale
             ->get()
@@ -24,7 +26,7 @@ class PaymentController extends Controller
                 $paid = $sale->payments_sum_amount ?? 0;
                 return $sale->grand_total > $paid;
             });
-        return view('payments.create', compact('sales'));
+        return view('payments.create', compact('sales','selectedSaleId'));
     }
 
     public function store(Request $request)
@@ -50,5 +52,16 @@ class PaymentController extends Controller
         ]);
 
         return redirect()->route('payments.index')->with('success','Payment recorded successfully!');
+    }
+
+    public function pending()
+    {
+        $sales = Sale::withSum('payments', 'amount')->get()
+            ->filter(function ($sale) {
+                $paid = $sale->payments_sum_amount ?? 0;
+                return $sale->grand_total > $paid;
+            });
+
+        return view('payments.pending', compact('sales'));
     }
 }

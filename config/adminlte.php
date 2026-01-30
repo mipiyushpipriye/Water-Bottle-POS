@@ -394,6 +394,11 @@ return [
                     'route' => 'payments.index',
                     'icon' => 'fas fa-list',
                 ],
+                [
+                    'text' => 'Pending Payments',
+                    'url'  => 'payments/pending',
+                    'icon' => 'fas fa-clock',
+                ],
             ],
         ],
 

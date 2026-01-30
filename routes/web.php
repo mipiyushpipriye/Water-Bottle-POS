@@ -53,6 +53,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/payments', [PaymentController::class, 'index'])->name('payments.index');
     Route::get('/payments/create', [PaymentController::class, 'create'])->name('payments.create');
     Route::post('/payments', [PaymentController::class, 'store'])->name('payments.store');
+    Route::get('/payments/pending', [PaymentController::class, 'pending'])->name('payments.pending');
 
     // Reports
     Route::get('/reports/daily', [ReportController::class, 'daily'])->name('reports.daily');

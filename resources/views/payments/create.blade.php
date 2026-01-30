@@ -29,7 +29,8 @@
                 $paid = $sale->payments_sum_amount ?? 0;
                 $remaining = $sale->grand_total - $paid;
             @endphp
-                <option value="{{ $sale->id }}">
+                <option value="{{ $sale->id }}"
+                    {{ isset($selectedSaleId) && $selectedSaleId == $sale->id ? 'selected' : '' }}>
                     {{ $sale->bill_no }} (Remaining: ₹{{ $remaining }})
                 </option>
             @endforeach
