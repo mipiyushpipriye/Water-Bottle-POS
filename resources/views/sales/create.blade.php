@@ -11,6 +11,20 @@
 <form action="{{ route('sales.store') }}" method="POST" id="sale-form">
     @csrf
 
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label>Customer (Optional)</label>
+            <select name="customer_id" class="form-control">
+                <option value="">Walk-in Customer</option>
+                @foreach($customers as $customer)
+                    <option value="{{ $customer->id }}">
+                        {{ $customer->name }} ({{ $customer->phone ?? 'No Phone' }})
+                    </option>
+                @endforeach
+            </select>
+        </div>
+    </div>
+
     <div id="sale-items-container">
         <div class="sale-item row mb-2">
             <div class="col-md-4">

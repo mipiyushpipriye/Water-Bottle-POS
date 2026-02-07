@@ -352,6 +352,23 @@ return [
         ],
 
         [
+            'text' => 'Customers',
+            'icon' => 'fas fa-users',
+            'submenu' => [
+                [
+                    'text' => 'All Customers',
+                    'route' => 'customers.index',
+                    'icon' => 'fas fa-list',
+                ],
+                [
+                    'text' => 'Add Customer',
+                    'route' => 'customers.create',
+                    'icon' => 'fas fa-plus',
+                ],
+            ],
+        ],
+
+        [
             'text'    => 'Sales / Billing',
             'icon'    => 'fas fa-cash-register',
             'submenu' => [

@@ -7,13 +7,14 @@ use App\Models\Product;
 use App\Models\Sale;
 use App\Models\SaleItem;
 use App\Models\Payment;
+use App\Models\Customer;
 
 class SaleController extends Controller
 {
     // List all sales
     public function index()
     {
-        $sales = Sale::with('items.product', 'payments')->orderBy('id', 'desc')->get();
+        $sales = Sale::with('items.product', 'payments', 'customer')->orderBy('id', 'desc')->get();
         return view('sales.index', compact('sales'));
     }
 
@@ -21,7 +22,9 @@ class SaleController extends Controller
     public function create()
     {
         $products = Product::all();
-        return view('sales.create', compact('products'));
+        $customers = Customer::orderBy('name')->get();
+
+        return view('sales.create', compact('products', 'customers'));
     }
 
     // Save sale
@@ -47,6 +50,7 @@ class SaleController extends Controller
 
         // Create sale
         $sale = Sale::create([
+            'customer_id' => $request->customer_id,
             'bill_no' => 'BILL-' . time(),
             'sale_date' => now(),
             'sub_total' => $sub_total,
@@ -84,7 +88,7 @@ class SaleController extends Controller
 
     public function print(Sale $sale)
     {
-        $sale->load('items.product.brand', 'payments');
+        $sale->load('items.product.brand', 'payments', 'customer');
 
         // Calculate remaining amount
         $paid = $sale->payments->sum('amount');

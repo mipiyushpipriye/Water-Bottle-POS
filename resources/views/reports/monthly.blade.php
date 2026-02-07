@@ -17,6 +17,7 @@
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
+            <th>Customer</th>
             <th>Bill No</th>
             <th>Date</th>
             <th>Sub Total</th>
@@ -28,6 +29,7 @@
     <tbody>
         @foreach($sales as $sale)
         <tr>
+            <td>{{ $sale->customer->name ?? '' }}</td>
             <td>{{ $sale->bill_no }}</td>
             <td>{{ $sale->sale_date }}</td>
             <td>₹{{ $sale->sub_total }}</td>

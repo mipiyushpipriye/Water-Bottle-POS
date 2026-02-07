@@ -11,6 +11,7 @@
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
+            <th>Customer</th>
             <th>Bill No</th>
             <th>Date</th>
             <th>Grand Total</th>
@@ -26,6 +27,7 @@
                 $remaining = $sale->grand_total - $paid;
             @endphp
             <tr>
+                <td>{{ $sale->customer->name ?? '' }}</td>
                 <td>{{ $sale->bill_no }}</td>
                 <td>{{ \Carbon\Carbon::parse($sale->sale_date)->format('d-m-Y') }}</td>
                 <td>₹{{ number_format($sale->grand_total, 2) }}</td>

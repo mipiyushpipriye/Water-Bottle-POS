@@ -47,6 +47,13 @@
 
 <h3>Bill: {{ $sale->bill_no }}</h3>
 <p>Date: {{ \Carbon\Carbon::parse($sale->sale_date)->format('d-m-Y') }}</p>
+@if($sale->customer)
+    <p><strong>Customer:</strong> {{ $sale->customer->name }}</p>
+    @if($sale->customer->phone)
+        <p><strong>Phone:</strong> {{ $sale->customer->phone }}</p>
+    @endif
+@endif
+
 <div class="line"></div>
 
 <table>

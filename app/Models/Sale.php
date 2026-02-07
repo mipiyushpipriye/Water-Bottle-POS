@@ -10,6 +10,7 @@ class Sale extends Model
     use HasFactory;
 
     protected $fillable = [
+        'customer_id',
         'bill_no', 
         'sale_date', 
         'sub_total', 
@@ -27,5 +28,11 @@ class Sale extends Model
     public function payments()
     {
         return $this->hasMany(Payment::class);
+    }
+
+    // Sale belongs to a customer
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
     }
 }

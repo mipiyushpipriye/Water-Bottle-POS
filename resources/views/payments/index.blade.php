@@ -17,6 +17,7 @@
     <thead>
         <tr>
             <th>ID</th>
+            <th>Customer</th>
             <th>Bill No</th>
             <th>Amount</th>
             <th>Method</th>
@@ -27,6 +28,7 @@
         @foreach($payments as $payment)
         <tr>
             <td>{{ $payment->id }}</td>
+            <td>{{ $payment->sale->customer->name ?? '' }}</td>
             <td>{{ $payment->sale->bill_no }}</td>
             <td>₹{{ $payment->amount }}</td>
             <td>{{ $payment->method }}</td>

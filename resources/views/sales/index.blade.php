@@ -22,6 +22,7 @@
     <table class="table table-bordered table-striped">
         <thead class="bg-light">
             <tr>
+                <th>Customer</th>
                 <th>Bill No</th>
                 <th>Date</th>
                 <th>Sub Total</th>
@@ -41,6 +42,7 @@
                 $remaining = $sale->grand_total - $paid;
             @endphp
             <tr>
+                <td>{{ $sale->customer ? $sale->customer->name : '' }}</td>
                 <td><strong>{{ $sale->bill_no }}</strong></td>
                 <td>{{ \Carbon\Carbon::parse($sale->sale_date)->format('d-m-Y') }}</td>
                 <td>₹{{ number_format($sale->sub_total, 2) }}</td>
@@ -93,6 +95,18 @@
     @endphp
     <div class="card mb-3 shadow-sm">
         <div class="card-body">
+            
+            @if($sale->customer)
+            <div class="d-flex align-items-center mb-2">
+                <div class="avatar bg-primary text-white rounded-circle mr-3" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div>
+                    <strong>{{ $sale->customer ? $sale->customer->name : '' }}</strong><br>
+                    <small class="text-muted">{{ $sale->customer ? $sale->customer->phone : '' }}</small>
+                </div>
+            </div>
+            @endif
 
             <div class="d-flex justify-content-between">
                 <strong>Bill #{{ $sale->bill_no }}</strong>
